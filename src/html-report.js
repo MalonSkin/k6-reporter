@@ -92,6 +92,36 @@ export function htmlReport(data, opts = {}) {
     'http_req_duration{expected_response:true}',
   ]
 
+  const metricNameMapping = {
+    'grpc_req_duration': 'gRPC 请求持续时间',
+    'http_req_duration': 'HTTP 请求持续时间',
+    'http_req_waiting': 'HTTP 请求等待时间',
+    'http_req_connecting': 'HTTP 请求连接时间',
+    'http_req_tls_handshaking': 'HTTP 请求 TLS 握手时间',
+    'http_req_sending': 'HTTP 请求发送时间',
+    'http_req_receiving': 'HTTP 请求接收时间',
+    'http_req_blocked': 'HTTP 请求阻塞时间',
+    'iteration_duration': '迭代持续时间',
+    'group_duration': '组持续时间',
+    'ws_connecting': 'WebSocket 连接时间',
+    'ws_msgs_received': 'WebSocket 消息接收',
+    'ws_msgs_sent': 'WebSocket 消息发送',
+    'ws_sessions': 'WebSocket 会话',
+    'iterations': '迭代次数',
+    'data_sent': '数据发送',
+    'checks': '检查',
+    'http_reqs': 'HTTP 请求',
+    'data_received': '数据接收',
+    'vus_max': '最大虚拟用户数',
+    'vus': '虚拟用户数',
+    'http_req_failed': 'HTTP 请求失败',
+    'http_req_duration{expected_response:true}': 'HTTP 请求持续时间（预期响应：true）',
+  };
+
+  function getMetricDisplayName(metric) {
+    return metricNameMapping[metric] || metric;
+  }
+
   // Render the template
   const html = ejs.render(template, {
     data,
@@ -103,6 +133,7 @@ export function htmlReport(data, opts = {}) {
     checkFailures,
     checkPasses,
     version,
+    getMetricDisplayName,
   })
 
   // Return HTML string needs wrapping in a handleSummary result object

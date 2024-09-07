@@ -12,7 +12,7 @@
     "reporting"
   ],
   "scripts": {
-    "build": "webpack",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack",
     "lint": "eslint src && prettier --check src",
     "lint-fix": "eslint src --fix && prettier --write src"
   },
