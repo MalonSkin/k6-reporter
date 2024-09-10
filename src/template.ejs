@@ -413,7 +413,7 @@
                     </div>
                     <div class="row">
                         <div>速率</div>
-                        <div><%= data.metrics.iterations.values.rate.toFixed(2) %>/秒</div>
+                        <div><%= data.metrics.iterations.values.rate.toFixed(2) %>/s</div>
                     </div>
                 </div>
             <% } %>
@@ -446,7 +446,7 @@
                 <div class="row">
                     <div>速率</div>
                     <div>
-                        <% if(data.metrics.http_reqs) { %><%= data.metrics.http_reqs.values.rate.toFixed(2) %>/秒
+                        <% if(data.metrics.http_reqs) { %><%= data.metrics.http_reqs.values.rate.toFixed(2) %>/s
                         <% } %>
                     </div>
                 </div>
@@ -457,11 +457,11 @@
                 <i class="fas fa-cloud-download-alt icon"></i>
                 <div class="row">
                     <div>总数</div>
-                    <div><%= (data.metrics.data_received.values.count / 1000000).toFixed(2) %> MB</div>
+                    <div><%= (data.metrics.data_received.values.count / 1000000).toFixed(2) %>MB</div>
                 </div>
                 <div class="row">
                     <div>速率</div>
-                    <div><%= (data.metrics.data_received.values.rate / 1000000).toFixed(2) %> MB/秒</div>
+                    <div><%= (data.metrics.data_received.values.rate / 1000000).toFixed(2) %>MB/s</div>
                 </div>
             </div>
 
@@ -470,11 +470,11 @@
                 <i class="fas fa-cloud-upload-alt icon"></i>
                 <div class="row">
                     <div>总数</div>
-                    <div><%= (data.metrics.data_sent.values.count / 1000000).toFixed(2) %> MB</div>
+                    <div><%= (data.metrics.data_sent.values.count / 1000000).toFixed(2) %>MB</div>
                 </div>
                 <div class="row">
                     <div>速率</div>
-                    <div><%= (data.metrics.data_sent.values.rate / 1000000).toFixed(2) %> MB/秒</div>
+                    <div><%= (data.metrics.data_sent.values.rate / 1000000).toFixed(2) %>MB/s</div>
                 </div>
             </div>
         </div>
